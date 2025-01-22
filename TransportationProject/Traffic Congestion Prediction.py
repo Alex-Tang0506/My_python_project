@@ -48,14 +48,14 @@ def create_datetime_index(df, start_date):
 def create_sequences(data, seq_length):
     x, y = [], []
     for i in range(len(data) - seq_length):
-        x.append(data[i:i + seq_length])  # 输入：过去 seq_length 的数据
-        y.append(data[i + seq_length])   # 输出：下一个时间步的数据
+        x.append(data[i:i + seq_length])
+        y.append(data[i + seq_length])
     return np.array(x), np.array(y)
 
 
 '''
 1. Data pre-processing
-# Create timestamp for matching with PeMS04 data
+# Create timestamp for matching with data
 # hour: 0-23, hours of each day
 # day_of_week: 0-6, 0=Monday, 1=Tuesday.... 6=Sunday
 # is_weekend: 0=No, 1=Yes
@@ -77,9 +77,9 @@ plt.figure(figsize=(12, 6))
 for sensor in range(5):
     plt.plot(PeMS_data[str(sensor)], label=f"Sensor {sensor}")
 
-plt.title("Traffic Trend for All Sensors")
+plt.title("Trend for All Sensors")
 plt.xlabel("Time Index")
-plt.ylabel("Traffic Congestion Level")
+plt.ylabel("Transaction Level")
 plt.legend()
 plt.grid(True)
 # plt.show()
@@ -194,9 +194,9 @@ with torch.no_grad():
 for i, sensor in enumerate(sensors):
     plt.figure(figsize=(12, 6))
     plt.plot(y_test_original[:, i], label=f'True Sensor {sensor}')
-    plt.plot(predictions[:, i], label=f'Predicted Sensor {sensor}')
-    plt.title(f'Sensor {sensor} Traffic Occupancy Prediction')
+    plt.plot(predictions[:, i], label=f'Analysis Sensor {sensor}')
+    plt.title(f'Sensor {sensor} Transaction sensor analysis')
     plt.xlabel('Time Steps')
-    plt.ylabel('Occupancy')
+    plt.ylabel('Value Monitoring')
     plt.legend()
     plt.show()
