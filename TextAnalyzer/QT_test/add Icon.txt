@@ -1,0 +1,2 @@
+        self.icon = QtGui.QIcon('icon.png')
+        MainWindow.setWindowIcon(self.icon)
